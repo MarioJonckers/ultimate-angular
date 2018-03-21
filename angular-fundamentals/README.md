@@ -1,7 +1,8 @@
-# ultimate-angular
-Courses on Ultimate Angular by Todd Motto
+<a href="https://ultimateangular.com" target="_blank"><img src="https://ultimateangular.com/assets/img/banners/ua-github.svg"></a>
 
-## Angular Fundamentals
+# Angular Fundamentals Seed
+
+> This is the seed project for the [Angular Fundamentals](https://ultimateangular.com/courses/#angular-2) course by [Todd Motto](https://twitter.com/toddmotto).
 
 ### Prerequisites
 Please make sure you have the following installed:
