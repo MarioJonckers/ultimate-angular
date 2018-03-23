@@ -5,11 +5,10 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-      <button (click)="handleClick()">
-        Change name
+      <button (click)="handleClick(username.value)">
+        Get value
       </button>
-      <input type="text" [ngModel]="name" (ngModelChange)="handleChange($event)">
-      <input type="text" [(ngModel)]="name">
+      <input type="text" #username>
       <div>
         {{ name }}
       </div>
@@ -19,12 +18,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   private name: string = 'Mario';
 
-  private handleChange(value: string): void {
+  private handleClick(value: string): void {
     this.name = value;
-  }
-
-  private handleClick(): void {
-    this.name = 'Jonckers';
   }
 
 }
