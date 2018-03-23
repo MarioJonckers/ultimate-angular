@@ -5,21 +5,20 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-      {{ title + '!' }}
+      <h1 [innerHTML]="title"></h1>
+      <h1>{{ title }}</h1>
+      <img [src]="logo">
+      <input type="text" [value]="name">
       <div>
-        {{ numberOne + numberTwo }}
-      </div>
-      <div>
-        {{ isHappy ? ':)' : ':(' }}
+        {{ name }}
       </div>
     </div>
   `
 })
 export class AppComponent {
   private title: string;
-  private isHappy: boolean = false;
-  private numberOne: number = 1;
-  private numberTwo: number = 2;
+  private name: string = 'Mario';
+  private logo: string = 'img/logo.png';
 
   constructor() {
     this.title = 'Ultimate Angular';
