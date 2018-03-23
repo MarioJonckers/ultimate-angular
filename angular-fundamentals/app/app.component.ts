@@ -5,10 +5,14 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
   template: `
     <div class="app">
-      Hello!
+      {{ title }}
     </div>
   `
 })
 export class AppComponent {
+  private title: string;
 
+  constructor() {
+    this.title = 'Ultimate Angular';
+  }
 }
