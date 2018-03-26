@@ -5,10 +5,14 @@ import { PassengerCountComponent } from './components/passenger-count/passenger-
 import { PassengerDetailComponent } from './components/passenger-detail/passenger-detail.component';
 import { PassengerDashboardService } from './passenger-dashboard.service';
 import { HttpModule } from '@angular/http';
+import { PassengerViewerComponent } from './containers/passenger-viewer/passenger-viewer.component';
 
 @NgModule({
   declarations: [
+    // Containers
     PassengerDashboardComponent,
+    PassengerViewerComponent,
+    //Components
     PassengerCountComponent,
     PassengerDetailComponent
   ],
@@ -17,7 +21,7 @@ import { HttpModule } from '@angular/http';
     HttpModule
   ],
   exports: [
-    PassengerDashboardComponent
+    PassengerViewerComponent
   ],
   providers: [
     PassengerDashboardService
