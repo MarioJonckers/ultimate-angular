@@ -11,7 +11,7 @@ import { NotFoundComponent } from './passenger-dashboard/not-found.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    redirectTo: 'passengers',
     pathMatch: 'full'
   }, {
     path: '**',
@@ -24,7 +24,7 @@ const routes: Routes = [
     // Angular Modules
     BrowserModule,
     CommonModule,
-    RouterModule.forRoot(routes, { useHash: true}),
+    RouterModule.forRoot(routes),
     // Custom Modules
     PassengerDashboardModule
   ],
