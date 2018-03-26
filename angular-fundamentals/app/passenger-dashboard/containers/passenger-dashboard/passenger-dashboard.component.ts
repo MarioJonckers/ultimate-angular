@@ -8,6 +8,9 @@ import { Passenger } from '../../models/passenger.interface';
   <div>
     <passenger-count
         [items]="passengers"></passenger-count>
+    <div *ngFor="let passenger of passengers">
+      {{ passenger.fullName }}
+    </div>
     <passenger-detail
         *ngFor="let passenger of passengers;"
         [detail]="passenger"
