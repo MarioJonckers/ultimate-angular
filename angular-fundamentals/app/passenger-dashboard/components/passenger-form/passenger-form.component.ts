@@ -16,6 +16,20 @@ import { Passenger } from '../../models/passenger.interface';
         Passenger ID:
         <input type="number" name="id" [ngModel]="detail?.id">
       </div>
+      
+      <div>
+        <label for="">
+            <input type="radio" [value]="true" name="checkedIn" [ngModel]="detail?.checkedIn" (ngModelChange)="toggleCheckedIn($event)">Yes
+        </label>
+        <label for="">
+            <input type="radio" [value]="false" name="checkedIn" [ngModel]="detail?.checkedIn" (ngModelChange)="toggleCheckedIn($event)">No
+        </label>
+      </div>
+      
+      <div *ngIf="form.value.checkedIn">
+        Check in date:
+        <input type="number" name="checkedInDate" [ngModel]="detail?.checkedInDate">
+      </div>
       {{ form.value | json }}
     </form>
   `
@@ -23,4 +37,10 @@ import { Passenger } from '../../models/passenger.interface';
 export class PassengerFormComponent {
   @Input()
   private detail: Passenger;
+
+  private toggleCheckedIn(checkedIn: boolean) {
+    if (checkedIn) {
+      this.detail.checkedInDate = Date.now();
+    }
+  }
 }
