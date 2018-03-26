@@ -23,6 +23,7 @@ import { Passenger } from '../../models/passenger.interface';
       </div>
       <button (click)="toggleEdit()">{{ editing ? 'Done' : 'Edit' }}</button>
       <button (click)="onRemove()">Remove</button>
+      <button (click)="goToPassenger()">View</button>
     </div>
   `
 })
@@ -30,9 +31,11 @@ export class PassengerDetailComponent implements OnChanges, OnInit {
   @Input()
   private detail: Passenger;
   @Output()
-  private edit: EventEmitter<any> = new EventEmitter();
+  private edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
   @Output()
-  private remove: EventEmitter<any> = new EventEmitter();
+  private remove: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+  @Output()
+  private view: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
   ngOnChanges(changes: any): void {
     if (changes.detail) {
@@ -59,5 +62,9 @@ export class PassengerDetailComponent implements OnChanges, OnInit {
 
   private onRemove(): void {
     this.remove.emit(this.detail);
+  }
+
+  private goToPassenger(): void {
+    this.view.emit(this.detail);
   }
 }
