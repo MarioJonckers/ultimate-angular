@@ -6,12 +6,16 @@ import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashbo
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './passenger-dashboard/home.component';
+import { NotFoundComponent } from './passenger-dashboard/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
     pathMatch: 'full'
+  }, {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
@@ -29,7 +33,8 @@ const routes: Routes = [
   ],
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ]
 })
 export class AppModule {
