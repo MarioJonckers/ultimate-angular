@@ -1,13 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Passenger } from '../../models/passenger.interface';
 import { Baggage } from '../../models/bagage.interface';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'passenger-form',
   styleUrls: ['passenger-form.component.scss'],
   template: `
-    <form #form="ngForm" novalidate>
-      {{ detail | json }}
+    <form (ngSubmit)="handleSubmit(form.value, form.valid)" #form="ngForm" novalidate>
       <div>
         Passenger name:
         <input type="text" required name="fullName" #fullName="ngModel" [ngModel]="detail?.fullName">
@@ -51,6 +51,8 @@ import { Baggage } from '../../models/bagage.interface';
 export class PassengerFormComponent {
   @Input()
   private detail: Passenger;
+  @Output()
+  private update: EventEmitter<any> = new EventEmitter();
 
   private baggage: Baggage[] = [
       {
@@ -67,6 +69,12 @@ export class PassengerFormComponent {
   private toggleCheckedIn(checkedIn: boolean) {
     if (checkedIn) {
       this.detail.checkedInDate = Date.now();
+    }
+  }
+
+  private handleSubmit(passenger: Passenger, isValid: boolean) {
+    if (isValid) {
+      this.update.emit(passenger);
     }
   }
 }
