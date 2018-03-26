@@ -1,8 +1,6 @@
 # ultimate-angular
 Courses on Ultimate Angular by Todd Motto
 
-## Angular Fundamentals
-
 ### Prerequisites
 Please make sure you have the following installed:
 * The latest version of [Node.js](https://nodejs.org/en/).
