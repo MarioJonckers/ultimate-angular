@@ -2,10 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { PassengerDashboardModule } from './passenger-dashboard/passenger-dashboard.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    BrowserModule
+    // Angular Modules
+    BrowserModule,
+    CommonModule,
+    // Custom Modules
+    PassengerDashboardModule
   ],
   bootstrap: [
     AppComponent
@@ -14,4 +20,5 @@ import { AppComponent } from './app.component';
     AppComponent
   ]
 })
-export class AppModule {}
+export class AppModule {
+}
