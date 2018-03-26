@@ -9,6 +9,7 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['passenger-viewer.component.scss'],
   template: `
     <div>
+      <button (click)="goBack()">&lsaquo; Go back</button>
       <passenger-form
         [detail]="passenger"
         (update)="onUpdatePassenger($event)"></passenger-form>
@@ -34,5 +35,9 @@ export class PassengerViewerComponent implements OnInit{
     this.passengerService.updatePassenger(event).subscribe((data: Passenger) => {
       this.passenger = Object.assign({}, this.passenger, event);
     })
+  }
+
+  private goBack() {
+    this.router.navigate(['/passengers'])
   }
 }
