@@ -11,7 +11,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class AuthRememberComponent {
   @Output()
-  private checked: EventEmitter<boolean> = new EventEmitter<boolean>();
+  public checked: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   private onChecked(value: boolean) {
     this.checked.emit(value);
