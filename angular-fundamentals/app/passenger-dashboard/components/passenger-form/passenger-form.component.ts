@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Passenger } from '../../models/passenger.interface';
 import { Baggage } from '../../models/bagage.interface';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'passenger-form',
