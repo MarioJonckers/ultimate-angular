@@ -41,12 +41,9 @@ export class PassengerDetailComponent implements OnChanges, OnInit {
     if (changes.detail) {
       this.detail = Object.assign({}, changes.detail.currentValue)
     }
-    console.log('OnChanges');
   }
 
-  ngOnInit(): void {
-    console.log('OnInit');
-  }
+  ngOnInit(): void {}
 
   private editing: boolean = false;
 
