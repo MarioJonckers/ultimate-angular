@@ -1,5 +1,6 @@
 import {
-  AfterContentInit, Component, ContentChildren, EventEmitter, Output, QueryList, ViewChild
+  AfterContentInit, AfterViewInit, ChangeDetectorRef, Component, ContentChildren, EventEmitter, Output, QueryList,
+  ViewChildren
 } from '@angular/core';
 
 import { User } from './auth-form.interface';
@@ -22,23 +23,33 @@ import { AuthMessageComponent } from './auth-message.component';
         </label>
         <ng-content select="auth-remember"></ng-content>
         <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
+        <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
+        <auth-message [style.display]="showMessage ? 'inherit' : 'none'"></auth-message>
         <ng-content select="button"></ng-content>
       </form>
     </div>
   `
 })
-export class AuthFormComponent implements AfterContentInit {
+export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   private showMessage: boolean;
-  @ViewChild(AuthMessageComponent)
-  private message: AuthMessageComponent;
+  @ViewChildren(AuthMessageComponent)
+  private message: QueryList<AuthMessageComponent>;
   @ContentChildren(AuthRememberComponent)
   private remember: QueryList<AuthRememberComponent>;
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
 
-  ngAfterContentInit(): void {
+  constructor(private cd: ChangeDetectorRef) {}
+
+  ngAfterViewInit(): void {
     if (this.message) {
-      this.message.days = 30;
+      this.message.forEach((message) => {
+        message.days = 30;
+      });
+      this.cd.detectChanges();
     }
+  }
+
+  ngAfterContentInit(): void {
     if (this.remember) {
       this.remember.forEach((item) => {
         item.checked.subscribe((checked: boolean) => this.showMessage = checked);
